@@ -14,6 +14,11 @@ const getPaidJobs=async(req, res, next)=>{
     res.json({jobs})
 }
 
+const getPaidJob=async(req, res, next)=>{
+    const job = await PaidJob.findById(req.params.id)
+    res.json(job)
+};
+
 const createJob=async(req, res, next)=>{
    const user = await User.findOne({_id:req.user.userID})
 
@@ -68,7 +73,7 @@ const modifyJob=async(req, res, next)=>{
         
 }
 
-module.exports= {getCommunityJobs, getPaidJobs, createJob, deleteJob, modifyJob}
+module.exports= {getCommunityJobs, getPaidJobs, createJob, deleteJob, modifyJob, getPaidJob}
 
 
 
